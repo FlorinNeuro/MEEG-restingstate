@@ -1,0 +1,23 @@
+In the following the needed Skripts are listed. You need to run the scripts subsequently - as the results are needed for the next step.
+
+1. in brainstorm bst_PAC: does the same thing as PACestimate_cluster.
+Same frequency resolultion only when not used from brainstorm. Otherwise 
+frequency resolution a bit different. Might not matter.
+Datepreprocessing: Demean the source time-series and remove bad segments before PAC calculation.
+
+2. megPAC_bst
+high-frequencies from 80-150 and binning according to PAC_calculation hard coded
+Could be changed if needed.
+Data preprocessing: Demean the source time-series and remove bad segments before calculation.
+For this part you need brainstorm in your path (calls process_resample)
+
+3. Before group analysis the individual results from megPAC_bst need to be projected to
+default anatomy and demeaned.
+Conv'*interp2.tess2tess_interp.Wmat';
+The interpolation matrix will be saved in the anatomy of the individual in the brainstorm 
+database - after the first time 1 data-file has been projected on the default anatomy
+One has to make sure that this is the correct interpolation file, i.e. not another anatomy file!!
+
+
+4. Group Analysis
+File RSpipeline_SVD
